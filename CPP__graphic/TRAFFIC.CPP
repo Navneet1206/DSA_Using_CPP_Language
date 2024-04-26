@@ -1,7 +1,7 @@
-#include<iostream.h>
-#include<conio.h>
-#include<graphics.h>
-#include<dos.h>
+#include <iostream.h>
+#include <conio.h>
+#include <graphics.h>
+#include <dos.h>
 void program_start();
 void stop_car();
 void cout_down();
@@ -10,897 +10,674 @@ void main()
 
 {
 
-	int gd=DETECT,gm;
+	int gd = DETECT, gm;
 
-	initgraph(&gd,&gm,"c:\\tc\\bgi");
+	initgraph(&gd, &gm, "c:\\tc\\bgi");
 
+	// starting
 
+	program_start();
 
-	//starting
+	// stop car
 
-	 program_start();
+	stop_car();
 
+	// cout down
 
+	cout_down();
 
-       //stop car
+	// last step
 
-       stop_car();
-
-
-
-       //cout down
-
-      cout_down();
-
-
-
-     //last step
-
-     last_step();
-
-
+	last_step();
 
 	getch();
 
 	closegraph();
-
 }
-
-
 
 void program_start()
 
 {
 
-		for(int i=0;i<=250;i++)
+	for (int i = 0; i <= 250; i++)
 
 	{
 
-	//car body
+		// car body
 
-	ellipse(110+i,335,400,135,150,90);
+		ellipse(110 + i, 335, 400, 135, 150, 90);
 
-	line(1+i,271,1+i,300);
+		line(1 + i, 271, 1 + i, 300);
 
-	line(1+i,300,37+i,300);
+		line(1 + i, 300, 37 + i, 300);
 
-	circle(53+i,300,17);
+		circle(53 + i, 300, 17);
 
-	line(69+i,300,154+i,300);
+		line(69 + i, 300, 154 + i, 300);
 
-	circle(173+i,300,17);
+		circle(173 + i, 300, 17);
 
-	line(193+i,300,260+i,300);
+		line(193 + i, 300, 260 + i, 300);
 
-	line(1+i,275,230+i,275);
+		line(1 + i, 275, 230 + i, 275);
 
-	ellipse(240+i,289,322,486,24,14.9);
+		ellipse(240 + i, 289, 322, 486, 24, 14.9);
 
-	line(55+i,249,55+i,275);
+		line(55 + i, 249, 55 + i, 275);
 
-	line(140+i,249,140+i,275);
+		line(140 + i, 249, 140 + i, 275);
 
+		// traffic system
 
-
-	      //traffic system
-
-		if(i>=210)
+		if (i >= 210)
 
 		{
 
-		  setfillstyle(SOLID_FILL,RED);
+			setfillstyle(SOLID_FILL, RED);
 
-		  circle(547,152,8); //red light
+			circle(547, 152, 8); // red light
 
-		  floodfill(547,152,15);
-
-
-
+			floodfill(547, 152, 15);
 		}
 
+		// traffic
 
+		line(548, 200, 548, 320);
 
+		rectangle(535, 139, 560, 200);
 
+		circle(548, 124, 15); // count
 
-	//traffic
+		circle(547, 152, 8); // red light
 
+		circle(547, 172, 8); // yellow  light
 
+		circle(547, 192, 8); // green light
 
+		// road
 
+		line(0, 318, getmaxx(), 318);
 
-	line(548,200,548,320);
+		delay(20);
 
-	rectangle(535,139,560,200);
-
-
-
-	circle(548,124,15); //count
-
-
-
-	circle(547,152,8); //red light
-
-	circle(547,172,8); //yellow  light
-
-	circle(547,192,8); //green light
-
-
-
-	//road
-
-	line(0,318,getmaxx(),318);
-
-
-
-       delay(20);
-
-	cleardevice();
-
-
-
+		cleardevice();
 	}
-
-
-
 }
-
-
-
-
 
 void stop_car()
 
 {
 
+	// stop car body
 
+	ellipse(360, 335, 400, 135, 150, 90);
 
+	line(250, 271, 250, 300);
 
+	line(250, 300, 288, 300);
 
-		//stop car body
+	circle(303, 300, 17);
 
-	ellipse(360,335,400,135,150,90);
+	line(319, 300, 404, 300);
 
-	line(250,271,250,300);
+	circle(423, 300, 17);
 
-	line(250,300,288,300);
+	line(443, 300, 510, 300);
 
-	circle(303,300,17);
+	line(250, 275, 480, 275);
 
-	line(319,300,404,300);
+	ellipse(490, 289, 322, 486, 24, 14.9);
 
-	circle(423,300,17);
+	line(305, 249, 305, 275);
 
-	line(443,300,510,300);
+	line(390, 249, 390, 275);
 
-	line(250,275,480,275);
+	// traffic light
 
-	ellipse(490,289,322,486,24,14.9);
+	line(548, 200, 548, 320);
 
-	line(305,249,305,275);
+	rectangle(535, 139, 560, 200);
 
-	line(390,249,390,275);
+	circle(548, 124, 15); // count
 
+	setfillstyle(SOLID_FILL, RED);
 
+	circle(547, 152, 8); // red light
 
-	//traffic light
+	floodfill(547, 152, 15);
 
-	line(548,200,548,320);
+	circle(547, 172, 8); // yellow  light
 
-	rectangle(535,139,560,200);
+	circle(547, 192, 8); // green light
 
+	// road
 
-
-	circle(548,124,15); //count
-
-
-
-	setfillstyle(SOLID_FILL,RED);
-
-	 circle(547,152,8); //red light
-
-	floodfill(547,152,15);
-
-	circle(547,172,8); //yellow  light
-
-	circle(547,192,8); //green light
-
-
-
-	//road
-
-	line(0,318,getmaxx(),318);
-
-
-
-
-
+	line(0, 318, getmaxx(), 318);
 }
-
-
 
 void cout_down()
 
 {
 
-	circle(548,124,15); //count
+	circle(548, 124, 15); // count
 
+	for (int g = 1; g <= 220; g++)
 
+	{
 
-  for(int g=1; g<=220;g++)
+		if (g == 20)
 
-  {
+		{
 
+			outtextxy(546, 122, "1");
 
+			// stop car body
 
-     if(g==20)
+			ellipse(360, 335, 400, 135, 150, 90);
 
-     {
+			line(250, 271, 250, 300);
 
-       outtextxy(546,122,"1");
+			line(250, 300, 288, 300);
 
+			circle(303, 300, 17);
 
+			line(319, 300, 404, 300);
 
-		//stop car body
+			circle(423, 300, 17);
 
-	ellipse(360,335,400,135,150,90);
+			line(443, 300, 510, 300);
 
-	line(250,271,250,300);
+			line(250, 275, 480, 275);
 
-	line(250,300,288,300);
+			ellipse(490, 289, 322, 486, 24, 14.9);
 
-	circle(303,300,17);
+			line(305, 249, 305, 275);
 
-	line(319,300,404,300);
+			line(390, 249, 390, 275);
 
-	circle(423,300,17);
+			// traffic light
 
-	line(443,300,510,300);
+			line(548, 200, 548, 320);
 
-	line(250,275,480,275);
+			rectangle(535, 139, 560, 200);
 
-	ellipse(490,289,322,486,24,14.9);
+			circle(548, 124, 15); // count
 
-	line(305,249,305,275);
+			setfillstyle(SOLID_FILL, RED);
 
-	line(390,249,390,275);
+			circle(547, 152, 8); // red light
 
+			floodfill(547, 152, 15);
 
+			circle(547, 172, 8); // yellow  light
 
-	//traffic light
+			circle(547, 192, 8); // green light
 
-	line(548,200,548,320);
+			// road
 
-	rectangle(535,139,560,200);
+			line(0, 318, getmaxx(), 318);
+		}
 
+		if (g == 50)
 
+		{
 
-	circle(548,124,15); //count
+			cleardevice();
 
+			circle(548, 124, 15);
 
+			outtextxy(546, 122, "2");
 
-	setfillstyle(SOLID_FILL,RED);
+			// stop car body
 
-	 circle(547,152,8); //red light
+			ellipse(360, 335, 400, 135, 150, 90);
 
-	floodfill(547,152,15);
+			line(250, 271, 250, 300);
 
-	circle(547,172,8); //yellow  light
+			line(250, 300, 288, 300);
 
-	circle(547,192,8); //green light
+			circle(303, 300, 17);
 
+			line(319, 300, 404, 300);
 
+			circle(423, 300, 17);
 
-	//road
+			line(443, 300, 510, 300);
 
-	line(0,318,getmaxx(),318);
+			line(250, 275, 480, 275);
 
+			ellipse(490, 289, 322, 486, 24, 14.9);
 
+			line(305, 249, 305, 275);
 
+			line(390, 249, 390, 275);
 
+			// traffic light
 
-     }
+			line(548, 200, 548, 320);
 
-     if(g==50)
+			rectangle(535, 139, 560, 200);
 
-     {
+			circle(548, 124, 15); // count
+
+			setfillstyle(SOLID_FILL, RED);
+
+			circle(547, 152, 8); // red light
+
+			floodfill(547, 152, 15);
+
+			circle(547, 172, 8); // yellow  light
+
+			circle(547, 192, 8); // green light
+
+			// road
+
+			line(0, 318, getmaxx(), 318);
+		}
+
+		if (g == 80)
+
+		{
+
+			cleardevice();
+
+			circle(548, 124, 15);
+
+			outtextxy(546, 122, "3");
+
+			// stop car body
+
+			ellipse(360, 335, 400, 135, 150, 90);
+
+			line(250, 271, 250, 300);
+
+			line(250, 300, 288, 300);
+
+			circle(303, 300, 17);
+
+			line(319, 300, 404, 300);
+
+			circle(423, 300, 17);
+
+			line(443, 300, 510, 300);
+
+			line(250, 275, 480, 275);
+
+			ellipse(490, 289, 322, 486, 24, 14.9);
+
+			line(305, 249, 305, 275);
+
+			line(390, 249, 390, 275);
+
+			// traffic light
+
+			line(548, 200, 548, 320);
+
+			rectangle(535, 139, 560, 200);
+
+			circle(548, 124, 15); // count
+
+			setfillstyle(SOLID_FILL, RED);
+
+			circle(547, 152, 8); // red light
+
+			floodfill(547, 152, 15);
+
+			circle(547, 172, 8); // yellow  light
+
+			circle(547, 192, 8); // green light
+
+			// road
+
+			line(0, 318, getmaxx(), 318);
+		}
+
+		if (g == 110)
+
+		{
+
+			cleardevice();
+
+			circle(548, 124, 15);
+
+			outtextxy(546, 122, "4");
+
+			// stop car body
+
+			ellipse(360, 335, 400, 135, 150, 90);
+
+			line(250, 271, 250, 300);
+
+			line(250, 300, 288, 300);
+
+			circle(303, 300, 17);
+
+			line(319, 300, 404, 300);
+
+			circle(423, 300, 17);
+
+			line(443, 300, 510, 300);
+
+			line(250, 275, 480, 275);
+
+			ellipse(490, 289, 322, 486, 24, 14.9);
+
+			line(305, 249, 305, 275);
+
+			line(390, 249, 390, 275);
+
+			// traffic light
+
+			line(548, 200, 548, 320);
+
+			rectangle(535, 139, 560, 200);
+
+			circle(548, 124, 15); // count
+
+			setfillstyle(SOLID_FILL, RED);
+
+			circle(547, 152, 8); // red light
+
+			floodfill(547, 152, 15);
+
+			circle(547, 172, 8); // yellow  light
+
+			circle(547, 192, 8); // green light
+
+			// road
+
+			line(0, 318, getmaxx(), 318);
+		}
+
+		if (g == 140)
+
+		{
+
+			cleardevice();
+
+			circle(548, 124, 15);
+
+			outtextxy(546, 122, "5");
+
+			// stop car body
+
+			ellipse(360, 335, 400, 135, 150, 90);
+
+			line(250, 271, 250, 300);
+
+			line(250, 300, 288, 300);
+
+			circle(303, 300, 17);
+
+			line(319, 300, 404, 300);
+
+			circle(423, 300, 17);
+
+			line(443, 300, 510, 300);
+
+			line(250, 275, 480, 275);
+
+			ellipse(490, 289, 322, 486, 24, 14.9);
+
+			line(305, 249, 305, 275);
+
+			line(390, 249, 390, 275);
+
+			// traffic light
+
+			line(548, 200, 548, 320);
+
+			rectangle(535, 139, 560, 200);
+
+			circle(548, 124, 15); // count
+
+			setfillstyle(SOLID_FILL, RED);
+
+			circle(547, 152, 8); // red light
+
+			floodfill(547, 152, 15);
+
+			circle(547, 172, 8); // yellow  light
+
+			circle(547, 192, 8); // green light
+
+			// road
+
+			line(0, 318, getmaxx(), 318);
+		}
+
+		if (g == 170)
+
+		{
+
+			cleardevice();
+
+			circle(548, 124, 15);
+
+			outtextxy(546, 122, "R");
+
+			// stop car body
+
+			ellipse(360, 335, 400, 135, 150, 90);
+
+			line(250, 271, 250, 300);
+
+			line(250, 300, 288, 300);
+
+			circle(303, 300, 17);
+
+			line(319, 300, 404, 300);
+
+			circle(423, 300, 17);
+
+			line(443, 300, 510, 300);
+
+			line(250, 275, 480, 275);
+
+			ellipse(490, 289, 322, 486, 24, 14.9);
+
+			line(305, 249, 305, 275);
+
+			line(390, 249, 390, 275);
+
+			// traffic light
+
+			line(548, 200, 548, 320);
+
+			rectangle(535, 139, 560, 200);
+
+			circle(548, 124, 15); // count
+
+			circle(547, 152, 8); // red light
+
+			setfillstyle(SOLID_FILL, YELLOW);
+
+			circle(547, 172, 8); // yellow  light
+
+			floodfill(547, 172, 15);
+
+			circle(547, 192, 8); // green light
+
+			// road
+
+			line(0, 318, getmaxx(), 318);
+		}
+
+		if (g == 200)
+
+		{
+
+			cleardevice();
+
+			circle(548, 124, 15);
+
+			outtextxy(546, 122, "R");
+
+			// stop car body
+
+			ellipse(360, 335, 400, 135, 150, 90);
+
+			line(250, 271, 250, 300);
+
+			line(250, 300, 288, 300);
+
+			circle(303, 300, 17);
+
+			line(319, 300, 404, 300);
+
+			circle(423, 300, 17);
+
+			line(443, 300, 510, 300);
+
+			line(250, 275, 480, 275);
+
+			ellipse(490, 289, 322, 486, 24, 14.9);
+
+			line(305, 249, 305, 275);
+
+			line(390, 249, 390, 275);
+
+			// traffic light
+
+			line(548, 200, 548, 320);
+
+			rectangle(535, 139, 560, 200);
+
+			circle(548, 124, 15); // count
+
+			circle(547, 152, 8); // red light
+
+			setfillstyle(SOLID_FILL, YELLOW);
+
+			circle(547, 172, 8); // yellow  light
+
+			floodfill(547, 172, 15);
+
+			circle(547, 192, 8); // green light
+
+			// road
+
+			line(0, 318, getmaxx(), 318);
+		}
+
+		delay(20);
+	}
 
 	cleardevice();
 
-	circle(548,124,15);
+	outtextxy(540, 118, "go");
 
-	outtextxy(546,122,"2");
+	// stop car body
 
+	ellipse(360, 335, 400, 135, 150, 90);
 
+	line(250, 271, 250, 300);
 
-		//stop car body
+	line(250, 300, 288, 300);
 
-	ellipse(360,335,400,135,150,90);
+	circle(303, 300, 17);
 
-	line(250,271,250,300);
+	line(319, 300, 404, 300);
 
-	line(250,300,288,300);
+	circle(423, 300, 17);
 
-	circle(303,300,17);
+	line(443, 300, 510, 300);
 
-	line(319,300,404,300);
+	line(250, 275, 480, 275);
 
-	circle(423,300,17);
+	ellipse(490, 289, 322, 486, 24, 14.9);
 
-	line(443,300,510,300);
+	line(305, 249, 305, 275);
 
-	line(250,275,480,275);
+	line(390, 249, 390, 275);
 
-	ellipse(490,289,322,486,24,14.9);
+	// traffic light
 
-	line(305,249,305,275);
+	line(548, 200, 548, 320);
 
-	line(390,249,390,275);
+	rectangle(535, 139, 560, 200);
 
+	circle(548, 124, 15); // count
 
+	circle(547, 152, 8); // red light
 
-	//traffic light
+	setfillstyle(SOLID_FILL, 0);
 
-	line(548,200,548,320);
+	circle(547, 172, 8); // yellow  light
 
-	rectangle(535,139,560,200);
+	floodfill(547, 172, 15);
 
+	setfillstyle(SOLID_FILL, GREEN);
 
+	circle(547, 192, 8); // green light
 
-	circle(548,124,15); //count
+	floodfill(547, 192, 15);
 
+	// road
 
-
-	setfillstyle(SOLID_FILL,RED);
-
-	 circle(547,152,8); //red light
-
-	floodfill(547,152,15);
-
-	circle(547,172,8); //yellow  light
-
-	circle(547,192,8); //green light
-
-
-
-	//road
-
-	line(0,318,getmaxx(),318);
-
-
-
-
-
-     }
-
-
-
-     if(g==80)
-
-     {
-
-	cleardevice();
-
-	circle(548,124,15);
-
-	outtextxy(546,122,"3");
-
-
-
-		//stop car body
-
-	ellipse(360,335,400,135,150,90);
-
-	line(250,271,250,300);
-
-	line(250,300,288,300);
-
-	circle(303,300,17);
-
-	line(319,300,404,300);
-
-	circle(423,300,17);
-
-	line(443,300,510,300);
-
-	line(250,275,480,275);
-
-	ellipse(490,289,322,486,24,14.9);
-
-	line(305,249,305,275);
-
-	line(390,249,390,275);
-
-
-
-	//traffic light
-
-	line(548,200,548,320);
-
-	rectangle(535,139,560,200);
-
-
-
-	circle(548,124,15); //count
-
-
-
-	setfillstyle(SOLID_FILL,RED);
-
-	 circle(547,152,8); //red light
-
-	floodfill(547,152,15);
-
-	circle(547,172,8); //yellow  light
-
-	circle(547,192,8); //green light
-
-
-
-	//road
-
-	line(0,318,getmaxx(),318);
-
-
-
-
-
-     }
-
-
-
-     if(g==110)
-
-     {
-
-	cleardevice();
-
-	circle(548,124,15);
-
-	outtextxy(546,122,"4");
-
-
-
-		//stop car body
-
-	ellipse(360,335,400,135,150,90);
-
-	line(250,271,250,300);
-
-	line(250,300,288,300);
-
-	circle(303,300,17);
-
-	line(319,300,404,300);
-
-	circle(423,300,17);
-
-	line(443,300,510,300);
-
-	line(250,275,480,275);
-
-	ellipse(490,289,322,486,24,14.9);
-
-	line(305,249,305,275);
-
-	line(390,249,390,275);
-
-
-
-	//traffic light
-
-	line(548,200,548,320);
-
-	rectangle(535,139,560,200);
-
-
-
-	circle(548,124,15); //count
-
-
-
-	setfillstyle(SOLID_FILL,RED);
-
-	 circle(547,152,8); //red light
-
-	floodfill(547,152,15);
-
-	circle(547,172,8); //yellow  light
-
-	circle(547,192,8); //green light
-
-
-
-	//road
-
-	line(0,318,getmaxx(),318);
-
-
-
-
-
-     }
-
-
-
-     if(g==140)
-
-     {
-
-	cleardevice();
-
-	circle(548,124,15);
-
-	outtextxy(546,122,"5");
-
-
-
-		//stop car body
-
-	ellipse(360,335,400,135,150,90);
-
-	line(250,271,250,300);
-
-	line(250,300,288,300);
-
-	circle(303,300,17);
-
-	line(319,300,404,300);
-
-	circle(423,300,17);
-
-	line(443,300,510,300);
-
-	line(250,275,480,275);
-
-	ellipse(490,289,322,486,24,14.9);
-
-	line(305,249,305,275);
-
-	line(390,249,390,275);
-
-
-
-	//traffic light
-
-	line(548,200,548,320);
-
-	rectangle(535,139,560,200);
-
-
-
-	circle(548,124,15); //count
-
-
-
-	setfillstyle(SOLID_FILL,RED);
-
-	 circle(547,152,8); //red light
-
-	floodfill(547,152,15);
-
-	circle(547,172,8); //yellow  light
-
-	circle(547,192,8); //green light
-
-
-
-	//road
-
-	line(0,318,getmaxx(),318);
-
-
-
-
-
-     }
-
-
-
-     if(g==170)
-
-     {
-
-       cleardevice();
-
-       circle(548,124,15);
-
-       outtextxy(546,122,"R");
-
-
-
-		//stop car body
-
-	ellipse(360,335,400,135,150,90);
-
-	line(250,271,250,300);
-
-	line(250,300,288,300);
-
-	circle(303,300,17);
-
-	line(319,300,404,300);
-
-	circle(423,300,17);
-
-	line(443,300,510,300);
-
-	line(250,275,480,275);
-
-	ellipse(490,289,322,486,24,14.9);
-
-	line(305,249,305,275);
-
-	line(390,249,390,275);
-
-
-
-	//traffic light
-
-	line(548,200,548,320);
-
-	rectangle(535,139,560,200);
-
-
-
-	circle(548,124,15); //count
-
-
-
-
-
-	 circle(547,152,8); //red light
-
-	setfillstyle(SOLID_FILL,YELLOW);
-
-	circle(547,172,8); //yellow  light
-
-	floodfill(547,172,15);
-
-	circle(547,192,8); //green light
-
-
-
-	//road
-
-	line(0,318,getmaxx(),318);
-
-
-
-
-
-     }
-
-     if(g==200)
-
-     {
-
-       cleardevice();
-
-       circle(548,124,15);
-
-       outtextxy(546,122,"R");
-
-
-
-		//stop car body
-
-	ellipse(360,335,400,135,150,90);
-
-	line(250,271,250,300);
-
-	line(250,300,288,300);
-
-	circle(303,300,17);
-
-	line(319,300,404,300);
-
-	circle(423,300,17);
-
-	line(443,300,510,300);
-
-	line(250,275,480,275);
-
-	ellipse(490,289,322,486,24,14.9);
-
-	line(305,249,305,275);
-
-	line(390,249,390,275);
-
-
-
-	//traffic light
-
-	line(548,200,548,320);
-
-	rectangle(535,139,560,200);
-
-
-
-	circle(548,124,15); //count
-
-
-
-	 circle(547,152,8); //red light
-
-	setfillstyle(SOLID_FILL,YELLOW);
-
-	circle(547,172,8); //yellow  light
-
-	floodfill(547,172,15);
-
-	circle(547,192,8); //green light
-
-	//road
-
-	line(0,318,getmaxx(),318);
-
-
-
-
-
-     }
-
-     delay(20);
-
-
-
-  }
-
-	cleardevice();
-
-	outtextxy(540,118,"go");
-
-
-
-		//stop car body
-
-	ellipse(360,335,400,135,150,90);
-
-	line(250,271,250,300);
-
-	line(250,300,288,300);
-
-	circle(303,300,17);
-
-	line(319,300,404,300);
-
-	circle(423,300,17);
-
-	line(443,300,510,300);
-
-	line(250,275,480,275);
-
-	ellipse(490,289,322,486,24,14.9);
-
-	line(305,249,305,275);
-
-	line(390,249,390,275);
-
-
-
-	//traffic light
-
-	line(548,200,548,320);
-
-	rectangle(535,139,560,200);
-
-
-
-	circle(548,124,15); //count
-
-
-
-	 circle(547,152,8); //red light
-
-	setfillstyle(SOLID_FILL,0);
-
-	circle(547,172,8); //yellow  light
-
-	floodfill(547,172,15);
-
-
-
-	setfillstyle(SOLID_FILL,GREEN);
-
-	circle(547,192,8); //green light
-
-	floodfill(547,192,15);
-
-
-
-
-
-	//road
-
-	line(0,318,getmaxx(),318);
-
-
-
-
-
-
-
+	line(0, 318, getmaxx(), 318);
 }
-
-
 
 void last_step()
 
 {
 
-
-
-
-
-	for(int g=0;g<=400;g++)
+	for (int g = 0; g <= 400; g++)
 
 	{
 
-		//stop car body
+		// stop car body
 
-	ellipse(360+g,335,400,135,150,90);
+		ellipse(360 + g, 335, 400, 135, 150, 90);
 
-	line(250+g,271,250+g,300);
+		line(250 + g, 271, 250 + g, 300);
 
-	line(250+g,300,288+g,300);
+		line(250 + g, 300, 288 + g, 300);
 
-	circle(303+g,300,17);
+		circle(303 + g, 300, 17);
 
-	line(319+g,300,404+g,300);
+		line(319 + g, 300, 404 + g, 300);
 
-	circle(423+g,300,17);
+		circle(423 + g, 300, 17);
 
-	line(443+g,300,510+g,300);
+		line(443 + g, 300, 510 + g, 300);
 
-	line(250+g,275,480+g,275);
+		line(250 + g, 275, 480 + g, 275);
 
-	ellipse(490+g,289,322,486,24,14.9);
+		ellipse(490 + g, 289, 322, 486, 24, 14.9);
 
-	line(305+g,249,305+g,275);
+		line(305 + g, 249, 305 + g, 275);
 
-	line(390+g,249,390+g,275);
+		line(390 + g, 249, 390 + g, 275);
 
+		// traffic light
 
+		line(548, 200, 548, 320);
 
-	//traffic light
+		rectangle(535, 139, 560, 200);
 
-	line(548,200,548,320);
+		circle(548, 124, 15); // count
 
-	rectangle(535,139,560,200);
+		circle(547, 152, 8); // red light
 
+		setfillstyle(SOLID_FILL, 0);
 
+		circle(547, 172, 8); // yellow  light
 
-	circle(548,124,15); //count
+		floodfill(547, 172, 15);
 
+		setfillstyle(SOLID_FILL, GREEN);
 
+		circle(547, 192, 8); // green light
 
-	 circle(547,152,8); //red light
+		floodfill(547, 192, 15);
 
-	setfillstyle(SOLID_FILL,0);
+		// road
 
-	circle(547,172,8); //yellow  light
+		line(0, 318, getmaxx(), 318);
 
-	floodfill(547,172,15);
+		delay(20);
 
-
-
-	setfillstyle(SOLID_FILL,GREEN);
-
-	circle(547,192,8); //green light
-
-	floodfill(547,192,15);
-
-
-
-
-
-	//road
-
-	line(0,318,getmaxx(),318);
-
-	delay(20);
-
-	cleardevice();
-
-       }
+		cleardevice();
+	}
 }
