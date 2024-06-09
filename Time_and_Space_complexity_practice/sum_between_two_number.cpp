@@ -3,6 +3,9 @@
 
 #include <iostream>
 using namespace std;
+
+
+//time complexity for this algorithm is O(n)
 int alogrithm_using_loop(int num1, int num2)
 {
     int result = 0;
@@ -12,6 +15,8 @@ int alogrithm_using_loop(int num1, int num2)
     }
     return result;
 }
+
+//time complexity for this algorithm is O(1)
 int algorithm_using_formula(int num1, int num2)
 {
     int n = (num2 - num1 + 1);
