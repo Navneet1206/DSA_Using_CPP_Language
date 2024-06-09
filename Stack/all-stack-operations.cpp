@@ -77,7 +77,7 @@ int main()
             break;
         case 4:
             exit(0);
-        default:
+        default: cout<<"You Entered wrong input! Please try again";
             break;
         }
     }
