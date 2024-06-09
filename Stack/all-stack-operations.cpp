@@ -19,6 +19,7 @@ int push()
         rare++;
         arr[rare] = data;
         return arr[rare];
+        retun 0;
     }
 }
 int pop()
@@ -32,6 +33,7 @@ int pop()
     {
         rare--;
         cout << "Stack element is deleted sucessfully " << endl;
+        return 0;
     }
 }
 int display()
@@ -48,7 +50,9 @@ int display()
             cout << arr[i] << " ";
         }
         cout << endl;
+        return 0;
     }
+    
 }
 int main()
 {
