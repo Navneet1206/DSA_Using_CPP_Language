@@ -1,9 +1,10 @@
 /*?Documentation left?*/
-/*?fully Incomplete copy from simple queue?*/
+/*?Incomplete operations?*/
+
 #include <iostream>
 using namespace std;
 int arr[100], size = sizeof(arr) / sizeof(arr[0]), front = -1, rare = -1;
-int enqueue()
+int enqueue_from_rare()
 {
     int data;
     cout << "Enter the data : ";
@@ -20,7 +21,7 @@ int enqueue()
     arr[++rare] = data;
     return 0;
 }
-int dequeue()
+int dequeue_from_front()
 {
     if (rare == -1 || front > rare)
     {
@@ -31,9 +32,10 @@ int dequeue()
     arr[++front];
     cout << "Queue element deleted succesfully"
          << front << " index\n";
+
     return 0;
 }
-int display()
+int display_from_front()
 {
     if (rare == -1 || front > rare || rare >= size - 1)
     {
@@ -54,24 +56,36 @@ int main()
     int choice;
     while (1)
     {
-        cout << "\n1.for instion in the queue : \n";
-        cout << "2.for deletion in the queue : \n";
-        cout << "3.for display :\n";
-        cout << "4.to Exit\n";
+        cout << "\n1.for instion in the queue from rare: \n";
+        cout << "2.for deletion in the queue from front : \n";
+        // cout << "3.for instion in the queue from front : \n";
+        // cout << "4.for deletion in the queue from rare : \n";
+        cout << "5.for display from front :\n";
+        // cout << "6.for display from rare :\n";
+        cout << "7.to Exit\n";
         cout << "Enter your choice : ";
         cin >> choice;
         switch (choice)
         {
         case 1:
-            enqueue();
+            enqueue_from_rare();
             break;
         case 2:
-            dequeue();
+            dequeue_from_front();
             break;
-        case 3:
-            display();
+        // case 3:
+        //     enqueue_from_front();
+        //     break;
+        // case 4:
+        //     dequeue_from_end();
+        //     break;
+        case 5:
+            display_from_front();
             break;
-        case 4:
+        // case 6:
+        //     display_from_rare();
+        //     break;
+        case 7:
             exit(0);
         default:
             cout << "You Entered wrong input! please try again";
