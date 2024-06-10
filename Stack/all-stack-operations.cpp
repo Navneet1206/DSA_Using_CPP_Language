@@ -2,50 +2,50 @@
 
 #include <iostream>
 using namespace std;
-int arr[100], rare = -1, size = sizeof(arr) / sizeof(arr[0]);
+int arr[100], rear = -1, size = sizeof(arr) / sizeof(arr[0]);
 int push()
 {
     int data;
     cout << "Enter the new element : ";
     cin >> data;
 
-    if (rare >= size - 1)
+    if (rear >= size - 1)
     {
         cout << "Stack is overflow\n";
         return 1;
     }
     else
     {
-        rare++;
-        arr[rare] = data;
-        return arr[rare];
+        rear++;
+        arr[rear] = data;
+        return arr[rear];
         retun 0;
     }
 }
 int pop()
 {
-    if (rare == -1)
+    if (rear == -1)
     {
         cout << "Stack is underflow";
         return -1;
     }
     else
     {
-        rare--;
+        rear--;
         cout << "Stack element is deleted sucessfully " << endl;
         return 0;
     }
 }
 int display()
 {
-    if (rare == size || rare == -1)
+    if (rear == size || rear == -1)
     {
         cout << "Stack is overflow or under flow";
         return -1;
     }
     else
     {
-        for (int i = 0; i <= rare; i++)
+        for (int i = 0; i <= rear; i++)
         {
             cout << arr[i] << " ";
         }

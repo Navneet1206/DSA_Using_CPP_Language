@@ -1,64 +1,82 @@
-/*?Documentation left?*/
-
 #include <iostream>
 using namespace std;
-int arr[100], size = sizeof(arr) / sizeof(arr[0]), front = -1, rare = -1;
+
+// Circular queue implementation
+int arr[100];
+int size = sizeof(arr) / sizeof(arr[0]);
+int front = -1, rear = -1;
+
+// Function to insert an element into the circular queue
 int enqueue()
 {
     int data;
-    cout << "Enter the data : ";
+    cout << "Enter the data: ";
     cin >> data;
-    if (rare >= size - 1)
-    {
+    if ((rear + 1) % size == front)
+    { // Check for queue overflow
         cout << "Queue is overflow\n";
         return -1;
     }
     if (front == -1)
-    {
-        front = 0; // Initialize front to 0 when first element is inserted
+    { // Initialize front when first element is inserted
+        front = 0;
     }
-    arr[++rare] = data;
+    rear = (rear + 1) % size; // Move rear to the next position
+    arr[rear] = data;
     return 0;
 }
+
+// Function to delete an element from the circular queue
 int dequeue()
 {
-    if (rare == -1 || front > rare)
-    {
-        cout << "queue is underflow\n";
+    if (front == -1)
+    { // Check for queue underflow
+        cout << "Queue is underflow\n";
         return -1;
     }
-
-    arr[++front];
-    cout << "Queue element deleted succesfully"
-         << front << " index\n";
-    return 0;
-}
-int display()
-{
-    if (rare == -1 || front > rare || rare >= size - 1)
-    {
-        cout << "Queue is overflow or Underflow";
-        return -1;
+    cout << "Queue element " << arr[front] << " deleted successfully from index " << front << "\n";
+    if (front == rear)
+    { // Queue has only one element
+        front = rear = -1;
     }
     else
     {
-        for (int i = front; i <= rare; i++)
-        {
-            cout << arr[i] << " ";
-        }
-        return 0;
+        front = (front + 1) % size; // Move front to the next position
     }
+    return 0;
 }
+
+// Function to display elements of the circular queue
+int display()
+{
+    if (front == -1)
+    { // Check for queue underflow
+        cout << "Queue is underflow\n";
+        return -1;
+    }
+    cout << "Queue elements: ";
+    int i = front;
+    while (true)
+    {
+        cout << arr[i] << " ";
+        if (i == rear)
+            break;
+        i = (i + 1) % size;
+    }
+    cout << "\n";
+    return 0;
+}
+
 int main()
 {
     int choice;
     while (1)
     {
-        cout << "\n1.for instion in the queue : \n";
-        cout << "2.for deletion in the queue : \n";
-        cout << "3.for display :\n";
-        cout << "4.to Exit\n";
-        cout << "Enter your choice : ";
+        cout << "\n1. Insert in the queue\n";
+        cout << "2. Delete from the queue\n";
+        cout << "3. Display the queue\n";
+        cout << "4. Exit\n";
+        cout << "Enter your choice: ";
         cin >> choice;
         switch (choice)
         {
@@ -74,7 +92,7 @@ int main()
         case 4:
             exit(0);
         default:
-            cout << "You Entered wrong input! please try again";
+            cout << "You entered a wrong input! Please try again\n";
             break;
         }
     }

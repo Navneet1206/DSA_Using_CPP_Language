@@ -2,13 +2,13 @@
 /*?fully Incomplete copy from simple queue?*/
 #include <iostream>
 using namespace std;
-int arr[100], size = sizeof(arr) / sizeof(arr[0]), front = -1, rare = -1;
+int arr[100], size = sizeof(arr) / sizeof(arr[0]), front = -1, rear = -1;
 int enqueue()
 {
     int data;
     cout << "Enter the data : ";
     cin >> data;
-    if (rare >= size - 1)
+    if (rear >= size - 1)
     {
         cout << "Queue is overflow\n";
         return -1;
@@ -17,12 +17,12 @@ int enqueue()
     {
         front = 0; // Initialize front to 0 when first element is inserted
     }
-    arr[++rare] = data;
+    arr[++rear] = data;
     return 0;
 }
 int dequeue()
 {
-    if (rare == -1 || front > rare)
+    if (rear == -1 || front > rear)
     {
         cout << "queue is underflow\n";
         return -1;
@@ -35,14 +35,14 @@ int dequeue()
 }
 int display()
 {
-    if (rare == -1 || front > rare || rare >= size - 1)
+    if (rear == -1 || front > rear || rear >= size - 1)
     {
         cout << "Queue is overflow or Underflow";
         return -1;
     }
     else
     {
-        for (int i = front; i <= rare; i++)
+        for (int i = front; i <= rear; i++)
         {
             cout << arr[i] << " ";
         }
