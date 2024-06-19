@@ -30,6 +30,7 @@ Arrays and vectors are fundamental data structures in C++ used to store collecti
 int arr[5];              // Declaration of an array with 5 elements
 int arr[5] = {1, 2, 3, 4, 5};  // Declaration and initialization
 
+```
 
 ### Accessing Elements
 
@@ -37,6 +38,7 @@ int arr[5] = {1, 2, 3, 4, 5};  // Declaration and initialization
 int x = arr[0]; // Accessing the first element
 arr[2] = 10;    // Modifying the third element
 
+```
 
 ### Iterating Through Elements
 
@@ -44,6 +46,7 @@ arr[2] = 10;    // Modifying the third element
 for (int i = 0; i < 5; ++i) {
     cout << arr[i] << " ";
 }
+```
 
 
 ### Advantages and Disadvantages
