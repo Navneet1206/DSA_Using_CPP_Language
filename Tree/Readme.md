@@ -254,5 +254,5 @@ Level order traversal visits nodes level by level from top to bottom and left to
 - Complexity: Trees can be more complex to implement compared to linear data structures.
 - Balancing Issues: Maintaining a balanced tree (like AVL or Red-Black Tree) requires additional operations during insertions and deletions.
 
-NT## Conclusion
+## Conclusion
 Trees are versatile data structures used for representing hierarchical data. Understanding different types of trees and their operations helps in choosing the right tree structure for specific applications. Binary trees, binary search trees, AVL trees, and Red-Black trees each offer unique benefits and are suited for different scenarios.
