@@ -29,3 +29,32 @@ Arrays and vectors are fundamental data structures in C++ used to store collecti
 ```cpp
 int arr[5];              // Declaration of an array with 5 elements
 int arr[5] = {1, 2, 3, 4, 5};  // Declaration and initialization
+
+
+### Accessing Elements
+
+```cpp
+int x = arr[0]; // Accessing the first element
+arr[2] = 10;    // Modifying the third element
+
+
+### Iterating Through Elements
+
+```cpp
+for (int i = 0; i < 5; ++i) {
+    cout << arr[i] << " ";
+}
+
+
+### Advantages and Disadvantages
+
+    #### Advantages:
+
+    -Simple to use and understand.
+    -Less overhead compared to vectors.
+
+    #### Disadvantages:
+
+    -Fixed size, cannot grow or shrink.
+    -No built-in functions for complex operations.
+
