@@ -1,6 +1,4 @@
 #include <iostream>
-#include <vector>
-#include <cmath>
 using namespace std;
 
 int frogJump(int *h, int n, int i)
