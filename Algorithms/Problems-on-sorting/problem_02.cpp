@@ -29,7 +29,6 @@ Example:
                 David 87
 */
 
-
 //=================================================================================//
 //    This code is pasted by GPT for my learning, this is not created by me.       //
 //=================================================================================//
@@ -37,33 +36,41 @@ Example:
 #include <iostream>
 #include <vector>
 #include <algorithm>
-
-struct Student {
-    std::string name;
+using namespace std; // Added By me For remove std:: repeatingness
+struct Student
+{
+    string name;
     int grade;
 };
 
 // Comparison function to sort students
-bool compareStudents(const Student& a, const Student& b) {
-    if (a.grade == b.grade) {
+bool compareStudents(const Student &a, const Student &b)
+{
+    if (a.grade == b.grade)
+    {
         return a.name < b.name;
     }
     return a.grade > b.grade;
 }
 
-int main() {
+int main()
+{
     int n;
-    std::cin >> n;
-    std::vector<Student> students(n);
-
-    for (int i = 0; i < n; ++i) {
-        std::cin >> students[i].name >> students[i].grade;
+    cout << "Enter the number of the students : "; // Added By me For better user friendly environment
+    cin >> n;
+    vector<Student> students(n);
+    cout << "Student name\tStudent marks (0-100) : \n"; // Added By me For better user friendly environment
+    for (int i = 0; i < n; ++i)
+    {
+        cin >> students[i].name >> students[i].grade;
     }
 
-    std::sort(students.begin(), students.end(), compareStudents);
+    sort(students.begin(), students.end(), compareStudents);
 
-    for (const auto& student : students) {
-        std::cout << student.name << " " << student.grade << std::endl;
+    cout << "\n\tSorted Name : \n\nStudent name\tStudent marks (0-100) : \n"; // Added By me For better user friendly environment
+    for (const auto &student : students)
+    {
+        cout << student.name << "                " << student.grade << endl;// spaces added By me For better user friendly environment
     }
 
     return 0;
