@@ -4,6 +4,7 @@ using namespace std;
 int main()
 {
     map<string, int> directory;
+    // map<string, int, greater<string>> directory;
 
     directory["Hello"] = 121321;
     directory["World"] = 21312;
