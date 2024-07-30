@@ -1,5 +1,3 @@
-// This program is made by me for testing how LL works for the tree this program is in the development
-
 #include <iostream>
 using namespace std;
 struct Node
@@ -9,7 +7,7 @@ struct Node
     Node *right;
 };
 
-Node *head = nullptr;
+Node *root = nullptr;
 void insertion_in_Binary_tree(int newdata)
 {
     Node *newnode = new Node();
@@ -17,45 +15,80 @@ void insertion_in_Binary_tree(int newdata)
     newnode->left = nullptr;
     newnode->right = nullptr;
 
-    if (head == nullptr)
+    if (root == nullptr)
     {
-        head = newnode;
+        root = newnode;
     }
     else
     {
-        if (newnode->data > head->data)
+        Node *current = root;
+        Node *parent = nullptr;
+
+        while (current != nullptr)
         {
-            head->right = newnode;
+            parent = current;
+            if (newdata < current->data)
+            {
+                current = current->left;
+            }
+            else
+            {
+                current = current->right;
+            }
+        }
+
+        if (newdata < parent->data)
+        {
+            parent->left = newnode;
         }
         else
         {
-            head->left = newnode;
+            parent->right = newnode;
         }
     }
 }
-void traversal_of_tree()
+void pre_order_traversal(struct Node *ptr)
 {
-
-    Node *temp1 = head;
-    Node *temp2 = head;
-
-    while (temp1->left != nullptr)
+    if (ptr != nullptr)
     {
-        temp1 = temp1->left;
+        cout << ptr->data << " ";
+        pre_order_traversal(ptr->left);
+        pre_order_traversal(ptr->right);
     }
-    cout << temp1->data << " ";
-    cout << head->data << " ";
-    while (temp2->right != nullptr)
+}
+void in_order_traversal(struct Node *ptr)
+{
+    if (ptr != nullptr)
     {
-        temp2 = temp2->right;
+        in_order_traversal(ptr->left);
+        cout << ptr->data << " ";
+        in_order_traversal(ptr->right);
     }
-    cout << temp2->data;
+}
+void post_order_traversal(struct Node *ptr)
+{
+    if (ptr != nullptr)
+    {
+        post_order_traversal(ptr->left);
+        post_order_traversal(ptr->right);
+        cout << ptr->data << " ";
+    }
 }
 int main()
 {
     insertion_in_Binary_tree(12);
     insertion_in_Binary_tree(13);
     insertion_in_Binary_tree(1);
-    traversal_of_tree();
+    insertion_in_Binary_tree(123);
+    insertion_in_Binary_tree(1232);
+    insertion_in_Binary_tree(15);
+    insertion_in_Binary_tree(16);
+    insertion_in_Binary_tree(3);
+    insertion_in_Binary_tree(5);
+    pre_order_traversal(root);
+    cout << endl;
+    in_order_traversal(root);
+    cout << endl;
+    post_order_traversal(root);
     return 0;
 }
