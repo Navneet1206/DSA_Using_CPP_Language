@@ -1,4 +1,4 @@
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
 
 void towerOfHanoi(int n, char source, char auxiliary, char destination)
@@ -24,8 +24,10 @@ int main()
     int n; // Number of disks
     cout << "Enter the number of disks: ";
     cin >> n;
+    int steps = (pow(2,n))-1;
 
     // A, B and C are names of rods
     towerOfHanoi(n, 'A', 'B', 'C');
+    cout<<"\nNumber of steps are : "<<steps;
     return 0;
 }
