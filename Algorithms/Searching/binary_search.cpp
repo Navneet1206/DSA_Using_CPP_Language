@@ -2,6 +2,7 @@
 #include <vector>
 using namespace std;
 
+// Bubble Sort for the Sorting Array because Binary Search needed Sorted array for Searching
 void bubble_sort(vector<int> &v)
 {
     int n = v.size();
