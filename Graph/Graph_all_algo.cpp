@@ -85,7 +85,7 @@ void dijkstra(int start, const vector<vector<pair<int, int>>> &adj)
 
     for (int i = 0; i < V; i++)
     {
-        cout << "Distance from " << start << " to " << i << " is " << dist[i] << endl;
+        cout << "Distance from " << start << " to " << i << " is " << (dist[i] == numeric_limits<int>::max() ? -1 : dist[i]) << endl;
     }
 }
 
@@ -137,6 +137,15 @@ bool compare(Edge a, Edge b)
     return a.weight < b.weight;
 }
 
+int find(int u, vector<int> &parent)
+{
+    if (parent[u] != u)
+    {
+        parent[u] = find(parent[u], parent); // Path compression
+    }
+    return parent[u];
+}
+
 void kruskal(const vector<vector<pair<int, int>>> &adj)
 {
     vector<Edge> edges;
@@ -145,7 +154,10 @@ void kruskal(const vector<vector<pair<int, int>>> &adj)
     {
         for (auto &neighbor : adj[u])
         {
-            edges.push_back({u, neighbor.first, neighbor.second});
+            if (u < neighbor.first)
+            { // Avoid adding the same edge twice
+                edges.push_back({u, neighbor.first, neighbor.second});
+            }
         }
     }
     sort(edges.begin(), edges.end(), compare);
@@ -156,15 +168,6 @@ void kruskal(const vector<vector<pair<int, int>>> &adj)
         parent[i] = i;
     }
 
-    auto find = [&](int u)
-    {
-        if (parent[u] != u)
-        {
-            parent[u] = find(parent[u]);
-        }
-        return parent[u];
-    };
-
     cout << "Minimum Spanning Tree (Kruskal's):" << endl;
     for (auto &edge : edges)
     {
@@ -172,8 +175,8 @@ void kruskal(const vector<vector<pair<int, int>>> &adj)
         int v = edge.v;
         int weight = edge.weight;
 
-        int set_u = find(u);
-        int set_v = find(v);
+        int set_u = find(u, parent);
+        int set_v = find(v, parent);
 
         if (set_u != set_v)
         {
@@ -209,7 +212,7 @@ void bellmanFord(int start, const vector<vector<pair<int, int>>> &adj)
     cout << "Bellman-Ford distances from " << start << ":" << endl;
     for (int i = 0; i < V; i++)
     {
-        cout << "Distance to " << i << " is " << dist[i] << endl;
+        cout << "Distance to " << i << " is " << (dist[i] == numeric_limits<int>::max() ? -1 : dist[i]) << endl;
     }
 }
 
@@ -228,23 +231,45 @@ int main()
     {
         int u, v, w;
         cin >> u >> v >> w;
-        adj[u].emplace_back(v, w);
-        adj[v].emplace_back(u, w); // For undirected graph
+        if (u >= 0 && u < V && v >= 0 && v < V)
+        { // Check for valid vertex indices
+            adj[u].emplace_back(v, w);
+            adj[v].emplace_back(u, w); // For undirected graph
+        }
+        else
+        {
+            cout << "Invalid edge: " << u << " " << v << endl;
+            i--; // Decrement i to repeat this iteration
+        }
     }
 
     int start;
     cout << "Enter starting vertex for DFS and BFS: ";
     cin >> start;
-    cout << "DFS starting from vertex " << start << ":" << endl;
-    DFS(start, adj);
+    if (start >= 0 && start < V)
+    {
+        cout << "DFS starting from vertex " << start << ":" << endl;
+        DFS(start, adj);
 
-    cout << "BFS starting from vertex " << start << ":" << endl;
-    BFS(start, adj);
+        cout << "BFS starting from vertex " << start << ":" << endl;
+        BFS(start, adj);
+    }
+    else
+    {
+        cout << "Invalid starting vertex." << endl;
+    }
 
     cout << "Enter starting vertex for Dijkstra's Algorithm: ";
     cin >> start;
-    cout << "Dijkstra's Algorithm starting from vertex " << start << ":" << endl;
-    dijkstra(start, adj);
+    if (start >= 0 && start < V)
+    {
+        cout << "Dijkstra's Algorithm starting from vertex " << start << ":" << endl;
+        dijkstra(start, adj);
+    }
+    else
+    {
+        cout << "Invalid starting vertex." << endl;
+    }
 
     cout << "Prim's Algorithm:" << endl;
     prim(adj);
@@ -254,8 +279,15 @@ int main()
 
     cout << "Enter starting vertex for Bellman-Ford Algorithm: ";
     cin >> start;
-    cout << "Bellman-Ford Algorithm starting from vertex " << start << ":" << endl;
-    bellmanFord(start, adj);
+    if (start >= 0 && start < V)
+    {
+        cout << "Bellman-Ford Algorithm starting from vertex " << start << ":" << endl;
+        bellmanFord(start, adj);
+    }
+    else
+    {
+        cout << "Invalid starting vertex." << endl;
+    }
 
     return 0;
 }
